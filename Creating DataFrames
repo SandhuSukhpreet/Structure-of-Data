@@ -1,0 +1,18 @@
+import pandas as pd
+xls = 'http://www.biostatisticien.eu/springeR/nutrition_elderly.xls'
+nutri = pd.read_excel(xls)
+
+nutri.head(3)
+
+nutri.info()
+
+dict = {1:'Female', 2:'Male'}
+nutri['gender'] = nutri['gender'].replace(dict).astype('category')
+nutri['height'] = nutri['height'].replace(dict).astype('float')
+nutri.info()
+
+nutri.to_csv('nutrii.csv')
+nutri.info()
+
+nutrii = pd.read_csv('nutrii.csv')
+nutrii['fat'].describe()
